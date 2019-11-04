@@ -2,9 +2,9 @@ import React from 'react';
 import './Login.scss';
 
 const Login = (props) => {
-  const {setRememberMe} = props;
+  const {setRememberMe, setEmail, setPassword, handleLogin} = props;
   return (
-      <div className="container mt-5">
+      <div className="mainContent container mt-5">
         <div className="row justify-content-center align-items-center">
           <div className="col-4">
             <form>
@@ -12,7 +12,9 @@ const Login = (props) => {
                 <label htmlFor="InputEmail">Email address</label>
                 <input type="email" className="form-control"
                        id="InputEmail"
-                       aria-describedby="emailHelp" placeholder="Enter email"/>
+                       aria-describedby="emailHelp" placeholder="Enter email"
+                       onInput={e => setEmail(e.target.value)}
+                />
                 <small id="emailHelp" className="form-text text-muted">We'll
                   never
                   share your email with anyone else.
@@ -21,7 +23,9 @@ const Login = (props) => {
               <div className="form-group">
                 <label htmlFor="InputPassword">Password</label>
                 <input type="password" className="form-control"
-                       id="InputPassword" placeholder="Password"/>
+                       id="InputPassword" placeholder="Password"
+                       onInput={e => setPassword(e.target.value)}
+                />
               </div>
               <div className="form-group form-check">
                 <input type="checkbox" className="form-check-input"
@@ -29,7 +33,7 @@ const Login = (props) => {
                 <label className="form-check-label" htmlFor="exampleCheck">Check
                   me out</label>
               </div>
-              <button type="button" className="btn btn-outline-secondary">Submit</button>
+              <button type="button" onClick={handleLogin} className="btn btn-outline-secondary">Submit</button>
             </form>
           </div>
         </div>
